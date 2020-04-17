@@ -1,34 +1,52 @@
 import $ from "jquery";
 import AOS from "aos";
 
-let scroll_distance = 500;
-let transparent = true;
 const nowuiKit = {
-  misc: {
-    navbar_menu_visible: 0,
-  },
-
+  transparent: true,
+  scroll_distance: 500,
+  navbar_menu_visible: 0,
   checkScrollForTransparentNavbar: debounce(function () {
-    if ($(document).scrollTop() > scroll_distance) {
-      if (transparent) {
-        transparent = false;
+    if ($(document).scrollTop() > nowuiKit.scroll_distance) {
+      if (nowuiKit.transparent) {
+        nowuiKit.transparent = false;
         $(".navbar[color-on-scroll]").removeClass("navbar-transparent");
       }
     } else {
-      if (!transparent) {
-        transparent = true;
+      if (!nowuiKit.transparent) {
+        nowuiKit.transparent = true;
         $(".navbar[color-on-scroll]").addClass("navbar-transparent");
       }
     }
   }, 17),
 };
 
-// Returns a function, that, as long as it continues to be invoked, will not
-// be triggered. The function will be called after it stops being called for
-// N milliseconds. If `immediate` is passed, trigger the function on the
-// leading edge, instead of the trailing.
+const startAOSLibrary = (function () {
+  let inited = false;
+  return function () {
+    if (inited) {
+      AOS.refresh();
+    } else {
+      inited = true;
+      AOS.init({
+        // uncomment below for on-scroll animations to played only once
+        // once: true
+      }); // initialize animate on scroll library
+    }
+  };
+})();
+
+export function init() {
+  startAOSLibrary();
+  checkAndChangeNavbarState();
+  handleNavbarTogglerClick();
+  handleInternalLinkClick();
+}
 
 function debounce(func, wait, immediate) {
+  // Returns a function, that, as long as it continues to be invoked, will not
+  // be triggered. The function will be called after it stops being called for
+  // N milliseconds. If `immediate` is passed, trigger the function on the
+  // leading edge, instead of the trailing.
   var timeout;
   return function () {
     var context = this,
@@ -42,29 +60,27 @@ function debounce(func, wait, immediate) {
   };
 }
 
-export function init() {
-  $(document).ready(function () {
-    AOS.init({
-      // uncomment below for on-scroll animations to played only once
-      // once: true
-    }); // initialize animate on scroll library
+function checkAndChangeNavbarState() {
+  nowuiKit.scroll_distance =
+    $(".navbar[color-on-scroll]").attr("color-on-scroll") || 500;
+  if ($(".navbar[color-on-scroll]").length !== 0) {
+    nowuiKit.checkScrollForTransparentNavbar();
+    handleWindowOnScroll();
+  }
+}
 
-    scroll_distance =
-      $(".navbar[color-on-scroll]").attr("color-on-scroll") || 500;
+function handleWindowOnScroll() {
+  $(window)
+    .off("scroll.window")
+    .on("scroll.window", nowuiKit.checkScrollForTransparentNavbar);
+}
 
-    // Check if we have the class "navbar-color-on-scroll" then add the function to
-    // remove the class "navbar-transparent" so it will transform to a plain color.
-    if ($(".navbar[color-on-scroll]").length !== 0) {
-      nowuiKit.checkScrollForTransparentNavbar();
-      $(window).on("scroll", nowuiKit.checkScrollForTransparentNavbar);
-    }
-  });
-
-  $(document).on("click", ".navbar-toggler", function () {
+function handleNavbarTogglerClick() {
+  function onClickHandler() {
     let $toggle = $(this);
-    if (nowuiKit.misc.navbar_menu_visible === 1) {
+    if (nowuiKit.navbar_menu_visible === 1) {
       $("html").removeClass("nav-open");
-      nowuiKit.misc.navbar_menu_visible = 0;
+      nowuiKit.navbar_menu_visible = 0;
       $("#bodyClick").remove();
       setTimeout(function () {
         $toggle.removeClass("toggled");
@@ -78,7 +94,7 @@ export function init() {
         .appendTo("body")
         .click(function () {
           $("html").removeClass("nav-open");
-          nowuiKit.misc.navbar_menu_visible = 0;
+          nowuiKit.navbar_menu_visible = 0;
           setTimeout(function () {
             $toggle.removeClass("toggled");
             $("#bodyClick").remove();
@@ -86,12 +102,17 @@ export function init() {
         });
 
       $("html").addClass("nav-open");
-      nowuiKit.misc.navbar_menu_visible = 1;
+      nowuiKit.navbar_menu_visible = 1;
     }
-  });
+  }
+  $(".navbar-toggler")
+    .off("click.NavbarToggler")
+    .on("click.NavbarToggler", onClickHandler);
+}
 
+function handleInternalLinkClick() {
   // Smooth scroll for links with hashes
-  $("a.smooth-scroll").click(function (event) {
+  function onClickHandler(event) {
     // On-page links
     if (
       window.location.pathname.replace(/^\//, "") ===
@@ -109,7 +130,7 @@ export function init() {
           {
             scrollTop: target.offset().top,
           },
-          1000,
+          800,
           function () {
             // Callback after animation
             // Must change focus!
@@ -126,5 +147,8 @@ export function init() {
         );
       }
     }
-  });
+  }
+  $("a.smooth-scroll")
+    .off("click.internalLink")
+    .on("click.internalLink", onClickHandler);
 }

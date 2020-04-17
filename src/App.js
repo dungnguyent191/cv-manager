@@ -12,7 +12,7 @@ export default class App extends React.Component {
     <div className="profile-page sidebar-collapse">
       <nav className="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
         <div className="container">
-          <div className="navbar-translate"><a className="navbar-brand" href="#header" rel="tooltip">Creative CV</a>
+          <div className="navbar-translate"><a className="navbar-brand smooth-scroll" href="#header" rel="tooltip">Creative CV</a>
             <button className="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
               aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span
                 className="navbar-toggler-bar bar1"></span><span className="navbar-toggler-bar bar2"></span><span
@@ -22,8 +22,8 @@ export default class App extends React.Component {
             <ul className="navbar-nav">
               <li className="nav-item"><a className="nav-link smooth-scroll" href="#about">About</a></li>
               <li className="nav-item"><a className="nav-link smooth-scroll" href="#skill">Skills</a></li>
-              <li className="nav-item"><a className="nav-link smooth-scroll" href="#portfolio">Portfolio</a></li>
               <li className="nav-item"><a className="nav-link smooth-scroll" href="#experience">Experience</a></li>
+              <li className="nav-item"><a className="nav-link smooth-scroll" href="#portfolio">Portfolio</a></li>
             </ul>
           </div>
         </div>
