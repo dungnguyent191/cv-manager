@@ -1,5 +1,7 @@
 import React from 'react';
-import * as AnimationHelper from '../plugins/animation';
+import * as AnimationHelper from '../assets/js/animation';
+import { Avatar, AvatarBackground, ProjectImage } from '../assets/img'
+import { PrintPage } from '../components/printPage';
 
 export default class Main extends React.Component {
   componentDidMount() {
@@ -34,16 +36,15 @@ export default class Main extends React.Component {
         <div className="profile-page" id="page-header">
           <div className="wrapper">
             <div className="page-header page-header-small" filter-color="green">
-              <div className="page-header-image" data-parallax="true" style={{ backgroundImage: `url('images/cc-bg-1.jpg')` }}>
+              <div className="page-header-image" data-parallax="true" style={{ backgroundImage: `url(${AvatarBackground})` }}>
               </div>
               <div className="container">
                 <div className="content-center">
-                  <div className="cc-profile-image"><a href="#page-header"><img src="images/anthony.jpg" alt="place holder" /></a></div>
+                  <div className="cc-profile-image"><a href="#page-header"><img src={`${Avatar}`} alt="place holder" /></a></div>
                   <div className="h2 title">Anthony Barnett</div>
-                  <p className="category text-white">Web Developer, Graphic Designer, Photographer</p><a
-                    className="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in"
-                    data-aos-anchor="data-aos-anchor">Hire Me</a><a className="btn btn-primary" href="#page-header" data-aos="zoom-in"
-                      data-aos-anchor="data-aos-anchor">Download CV</a>
+                  <p className="category text-white">Web Developer, Graphic Designer, Photographer</p>
+                  <button className="btn btn-primary">Hire Me</button>
+                  <PrintPage><button className="btn btn-primary">Download CV</button></PrintPage>
                 </div>
               </div>
               <div className="section">
@@ -232,7 +233,7 @@ export default class Main extends React.Component {
                     <div className="col-md-12">
                       <div className="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                         <a href="#web-development">
-                          <figure className="cc-effect"><img src="images/project-2.jpg" alt="place holder" />
+                          <figure className="cc-effect"><img src={`${ProjectImage}`} alt="place holder" />
                             <figcaption>
                               <div className="h4">Startup Project</div>
                               <p>Web Development</p>
@@ -241,7 +242,7 @@ export default class Main extends React.Component {
                         </a></div>
                       <div className="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                         <a href="#web-development">
-                          <figure className="cc-effect"><img src="images/project-2.jpg" alt="place holder" />
+                          <figure className="cc-effect"><img src={`${ProjectImage}`} alt="place holder" />
                             <figcaption>
                               <div className="h4">Startup Project</div>
                               <p>Web Development</p>
@@ -258,17 +259,17 @@ export default class Main extends React.Component {
       </div>
 
       <footer className="footer">
-        <div className="container text-center"><a className="cc-facebook btn btn-link" href="#page-header"><i className="fa fa-facebook fa-2x "
-          aria-hidden="true"></i></a><a className="cc-twitter btn btn-link " href="#page-header"><i className="fa fa-twitter fa-2x "
-            aria-hidden="true"></i></a><a className="cc-google-plus btn btn-link" href="#page-header"><i className="fa fa-google-plus fa-2x"
-              aria-hidden="true"></i></a><a className="cc-instagram btn btn-link" href="#page-header"><i className="fa fa-instagram fa-2x "
+        <div className="container text-center"><a className="cc-facebook btn btn-link" href="#page-header"> <i className="fa fa-facebook fa-2x "
+          aria-hidden="true"></i></a><a className="cc-twitter btn btn-link " href="#page-header"> <i className="fa fa-twitter fa-2x "
+            aria-hidden="true"></i></a><a className="cc-google-plus btn btn-link" href="#page-header"> <i className="fa fa-google-plus fa-2x"
+              aria-hidden="true"></i></a><a className="cc-instagram btn btn-link" href="#page-header"> <i className="fa fa-instagram fa-2x "
                 aria-hidden="true"></i></a></div>
         <div className="h4 title text-center">Anthony Barnett</div>
         <div className="text-center text-muted">
           <p> Creative CV. All rights reserved.
         <br />Design
         <a className="credit" href="https://templateflip.com"
-              target="_blank">TemplateFlip</a>
+              target="_blank" rel="noopener noreferrer">TemplateFlip</a>
           </p>
         </div>
       </footer>

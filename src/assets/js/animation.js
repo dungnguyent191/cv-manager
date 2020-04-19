@@ -25,7 +25,7 @@ function onClickInternalLink() {
       autoScrollToElement(this.hash);
     }
   }
-  $("a.smooth-scroll")
+  $("a[href^='#']")
     .off("click.smoothScroll")
     .on("click.smoothScroll", onClickHandler);
 }

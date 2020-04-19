@@ -1,0 +1,14 @@
+@media print {
+  [data-aos] {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translate(0) scale(1) !important;
+  }
+
+  .button-container {
+    visibility: hidden;
+  }
+  button.btn.btn-primary {
+    display: none !important;
+  }
+}
