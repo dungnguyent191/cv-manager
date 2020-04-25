@@ -9,26 +9,10 @@ export function init() {
   startAOSLibrary();
   checkAndChangeNavbarColor();
   handleNavbarTogglerClick();
-
-  onClickInternalLink();
   onScrollToHashElement();
 }
 
-function onClickInternalLink() {
-  function onClickHandler(event) {
-    if (
-      window.location.pathname.replace(/^\//, "") ===
-      this.pathname.replace(/^\//, "") &&
-      window.location.hostname === this.hostname
-    ) {
-      event.preventDefault();
-      autoScrollToElement(this.hash);
-    }
-  }
-  $("a[href^='#']")
-    .off("click.smoothScroll")
-    .on("click.smoothScroll", onClickHandler);
-}
+
 
 function onScrollToHashElement() {
   $(document).off('scroll.document').on("scroll.document", function (e) {
@@ -43,10 +27,3 @@ function onScrollToHashElement() {
   });
 }
 
-function autoScrollToElement(elementSelector) {
-  let target = $(elementSelector);
-  if (target.length) {
-    $("html, body").animate({ scrollTop: target.offset().top }, 250);
-    console.log("auto scroll");
-  }
-}

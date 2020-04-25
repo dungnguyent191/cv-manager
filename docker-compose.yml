@@ -1,0 +1,7 @@
+cv:
+  image: test
+  container_name: compose
+  stdin_open: true # docker run -i
+  tty: true # docker run -t
+  ports:
+    - "80:3000"

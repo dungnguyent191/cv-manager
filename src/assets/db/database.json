@@ -1,0 +1,56 @@
+{
+  "profileHeader": {
+    "name": "Dung Nguyen",
+    "title": "Application Developer"
+  },
+  "socialLinks": {
+    "facebook": "https://www.facebook.com",
+    "twitter": "https://twitter.com",
+    "google": "https://google.com"
+  },
+  "about": {
+    "title": "Hi, I am Dung, I play my role in this world as a developer.",
+    "intro": "More than 3 years of experience in application development, 2 years of experience in developing web apps using SPA frameworks. Contact me? Please look at the following information below.",
+    "content": {
+      "age": "29",
+      "email": "dungnguyent@gmail.com",
+      "phone": "0986383383",
+      "address": "Tan Binh District, Ho Chi Minh City",
+      "language": "English, Japanese"
+    }
+  },
+  "skill": {
+    "css": "8",
+    "typescript": "8",
+    "reactjs": "8",
+    "express": "7.5"
+  },
+  "experience": [
+    {
+      "startTime": "March 2016",
+      "endTime": "April 2016",
+      "company": "DSQuare",
+      "role": "Python Developer",
+      "description": "Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui."
+    },
+    {
+      "startTime": "2017",
+      "endTime": "Present",
+      "company": "",
+      "role": "Freelance Web Developer",
+      "description": "Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui."
+    },
+    {
+      "startTime": "June 2018",
+      "endTime": "Present",
+      "company": "Nashtech",
+      "role": "Frontend Developer",
+      "description": "Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui."
+    }
+  ],
+  "portfolio": {
+    "Youseeme": "https://www.youseeme.pro",
+    "Edvisor": "https://www.edvisor.io/",
+    "Tabcorp": "https://www.tabcorp.com.au/"
+  }
+}

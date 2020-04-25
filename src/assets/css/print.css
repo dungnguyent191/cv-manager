@@ -8,7 +8,10 @@
   .button-container {
     visibility: hidden;
   }
-  button.btn.btn-primary {
+  button {
+    display: none !important;
+  }
+  #portfolio {
     display: none !important;
   }
 }
