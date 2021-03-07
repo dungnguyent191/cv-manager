@@ -1,15 +1,9 @@
 import $ from "jquery";
 import startAOSLibrary from "./aos";
-import {
-  checkAndChangeNavbarColor,
-  handleNavbarTogglerClick,
-} from "./nowUIKit";
 import { debounce } from "./utils";
 
 export function init() {
   startAOSLibrary();
-  checkAndChangeNavbarColor();
-  handleNavbarTogglerClick();
   onScrollToHashElement();
 }
 
