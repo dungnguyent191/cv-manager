@@ -5,7 +5,7 @@ import { DataService } from '../../../services/data-service'
 export class AboutSection extends React.Component {
   constructor() {
     super();
-    this.state.data = DataService.get();
+    this.state.data = DataService.getData();
   }
   state = {};
 

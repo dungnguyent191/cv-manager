@@ -3,16 +3,17 @@ import * as AnimationHelper from '../assets/js/animation';
 import { PageHeader } from '../components/PageHeader';
 import { PageFooter } from '../components/PageFooter';
 import { PageContent } from '../components/PageContent';
+import { useEffect } from 'react';
 
-export default class Main extends React.Component {
-  componentDidMount() {
+const Main = () => {
+  useEffect(() => {
     AnimationHelper.init();
-  }
-  render() {
+  }, [])
     return <>
       <PageHeader />
       <PageContent />
       <PageFooter />
     </>
-  }
 }
+
+export default Main

@@ -4,7 +4,7 @@ import { DataService } from '../../../services/data-service';
 export class ExperienceSection extends React.Component {
   constructor() {
     super();
-    this.state.data = DataService.get();
+    this.state.data = DataService.getData();
   }
   state = {};
 

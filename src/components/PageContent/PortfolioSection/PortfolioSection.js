@@ -1,17 +1,14 @@
-import * as React from 'react'
-import { DataService } from '../../../services/data-service';
+import * as React from "react";
+import { DataService } from "../../../services/data-service";
 
 export class PortfolioSection extends React.Component {
-  state = {};
   componentDidMount = async () => {
-    const data = DataService.get();
-    this.setState({
-      data,
-      portfolioInformation: await DataService.fetchPortfolioInformation(data)
-    })
-  }
+    const portfolioInformation = await DataService.fetchPortfolioInformation();
+    this.setState({ portfolioInformation });
+  };
 
   render() {
+    const portfolioInformation = this.state?.portfolioInformation;
     return (
       <div className="section" id="portfolio">
         <div className="container">
@@ -20,41 +17,39 @@ export class PortfolioSection extends React.Component {
               <div className="h4 text-center mb-4 title">Portfolio</div>
             </div>
           </div>
-          <PortfolioGallery portfolioInformation={this.state.portfolioInformation} />
+          {portfolioInformation && (
+            <PortfolioGallery portfolioInformation={portfolioInformation} />
+          )}
         </div>
       </div>
-    )
+    );
   }
 }
 
-const PortfolioGallery = (props) => {
-  const { portfolioInformation } = props;
-  if (!portfolioInformation) return null;
-  let portfolioGalleryTemplate = []
-  portfolioInformation.forEach((websiteInformation, index) => {
-    portfolioGalleryTemplate.push(
-      <div className="col-md-6" key={index}>
-        <div className="cc-porfolio-image img-raised mt-2"
-          data-aos="fade-down" data-aos-anchor-placement="top-bottom"
-          style={{ backgroundImage: `url('${websiteInformation.image}')` }}>
-          <figure className="cc-effect">
-            <a href={websiteInformation.url} target="_blank" rel="noopener noreferrer">
-              <figcaption>
-                <div className="h4">{websiteInformation.title}</div>
-                <p>{websiteInformation.description}</p>
-              </figcaption>
-            </a>
-          </figure>
-        </div>
+const PortfolioGallery = ({ portfolioInformation }) => {
+  const portfolioGalleryCells = portfolioInformation.map(
+    (websiteInformation, index) => (
+      <div
+        className="md-6"
+        data-aos="fade-down"
+        data-aos-anchor-placement="top-bottom"
+        style={{ backgroundImage: `url('${websiteInformation.image}')` }}
+      >
+        <a
+          href={websiteInformation.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="h4">{websiteInformation.title}</div>
+          <p>{websiteInformation.description}</p>
+        </a>
       </div>
     )
-  });
+  );
 
   return (
     <div className="gallery mt-5">
-      <div className="row">
-        {portfolioGalleryTemplate}
-      </div>
+      <div className="row">{portfolioGalleryCells}</div>
     </div>
-  )
-}
+  );
+};

@@ -3675,12 +3675,6 @@ body {
   line-height: 1.625rem;
 }
 
-.navbar .navbar-toggler {
-  width: 37px;
-  height: 27px;
-  outline: 0;
-  cursor: pointer;
-}
 
 .navbar .navbar-toggler.navbar-toggler-left {
   position: relative;
@@ -5593,7 +5587,7 @@ Created using IcoMoon - icomoon.io
 
 .page-header .container {
   height: 100%;
-  z-index: 1;
+  /* z-index: 1; */
   text-align: center;
   position: relative;
 }
@@ -5659,7 +5653,7 @@ Created using IcoMoon - icomoon.io
 }
 
 .page-header .container {
-  z-index: 2;
+  /* z-index: 2; */
 }
 
 .clear-filter:after,

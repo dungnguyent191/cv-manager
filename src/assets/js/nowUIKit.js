@@ -1,31 +1,37 @@
 import $ from "jquery";
-import { debounce } from './utils'
+import { debounce } from "./utils";
 
 const nowuiKit = {
   transparent: true,
   scroll_distance: 500,
   navbar_menu_visible: 0,
   checkAndChangeNavbarColor() {
+    function test() {
+      debounce(
+        function () {
+          if ($(document).scrollTop() > nowuiKit.scroll_distance) {
+            if (nowuiKit.transparent) {
+              nowuiKit.transparent = false;
+              $(".navbar[color-on-scroll]").removeClass("navbar-transparent");
+            }
+          } else {
+            if (!nowuiKit.transparent) {
+              nowuiKit.transparent = true;
+              $(".navbar[color-on-scroll]").addClass("navbar-transparent");
+            }
+          }
+        },
+        20,
+        "checkTransparent"
+      );
+    }
     nowuiKit.scroll_distance =
       $(".navbar[color-on-scroll]").attr("color-on-scroll") || 500;
     if ($(".navbar[color-on-scroll]").length !== 0) {
       $(window)
         .off("scroll.window")
-        .on("scroll.window", function () {
-          debounce(function () {
-            if ($(document).scrollTop() > nowuiKit.scroll_distance) {
-              if (nowuiKit.transparent) {
-                nowuiKit.transparent = false;
-                $(".navbar[color-on-scroll]").removeClass("navbar-transparent");
-              }
-            } else {
-              if (!nowuiKit.transparent) {
-                nowuiKit.transparent = true;
-                $(".navbar[color-on-scroll]").addClass("navbar-transparent");
-              }
-            }
-          }, 17, 'checkTransparent')
-        }).trigger('scroll.window');
+        .on("scroll.window", test)
+        .trigger("scroll.window");
     }
   },
   handleNavbarTogglerClick() {
@@ -61,7 +67,7 @@ const nowuiKit = {
     $(".navbar-toggler")
       .off("click.NavbarToggler")
       .on("click.NavbarToggler", onClickHandler);
-  }
+  },
 };
 
-export const { checkAndChangeNavbarColor, handleNavbarTogglerClick } = nowuiKit
+export const { checkAndChangeNavbarColor, handleNavbarTogglerClick } = nowuiKit;
