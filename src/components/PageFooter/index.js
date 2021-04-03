@@ -7,6 +7,7 @@ export class PageFooter extends React.Component {
   state = {};
   componentDidMount() {
     this.setState({ data: DataService.getData() });
+    console.log('test')
   }
 
   render() {

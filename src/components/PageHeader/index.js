@@ -7,7 +7,7 @@ export const PageHeader = () => {
   return (
     <StyledPageHeader>
       <Navbar bg="dark" expand="lg">
-        <StyledInternalLink className="navbar-brand" href="#page-header">
+        <StyledInternalLink className="navbar-brand" href="#">
           TUANDUNG.INFO
         </StyledInternalLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -30,6 +30,7 @@ const StyledPageHeader = styled.div`
   position: fixed;
   width: 100%;
   z-index: 999;
+  top: 0;
 `;
 
 const StyledInternalLink = styled(InternalLink)`

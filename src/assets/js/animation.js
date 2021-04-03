@@ -1,9 +1,9 @@
 import $ from "jquery";
-import startAOSLibrary from "./aos";
+// import startAOSLibrary from "./aos";
 import { debounce } from "./utils";
 
 export function init() {
-  startAOSLibrary();
+  // startAOSLibrary();
   onScrollToHashElement();
 }
 
@@ -17,7 +17,7 @@ function onScrollToHashElement() {
   }
   function checkAndChangeUrlHash(e) {
     let hasValue;
-    $(".section").each(function () {
+    $("div [id]").each(function () {
       if (
         $(this).offset().top <= window.pageYOffset &&
         $(this).offset().top + $(this).outerHeight() > window.pageYOffset
